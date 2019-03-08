@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using ClothingStore.Models;
+using ClothingStore.WebApp.Models;
 
-namespace ClothingStore.Controllers
+namespace ClothingStore.WebApp.Controllers
 {
     public class HomeController : Controller
     {
