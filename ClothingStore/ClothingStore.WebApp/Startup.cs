@@ -29,8 +29,8 @@ namespace ClothingStore.WebApp
         {
             // DONT FORGET TO ADD YOUR USER SECRET BY RIGHT CLICKING!!!!!!
             // Here is where we should set out DB connection string thing
-            //services.AddDbContext<RestaurantReviewsDBContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("RestaurantReviewsDB")));
+            services.AddDbContext<Project0Context>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ClothingStoreDB")));
 
             services.Configure<CookiePolicyOptions>(options =>
             {
