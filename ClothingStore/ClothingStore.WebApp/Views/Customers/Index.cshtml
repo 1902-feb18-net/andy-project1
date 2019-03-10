@@ -17,6 +17,12 @@
 <p>
     <a asp-action="Create">Add New Customer</a>
 </p>
+
+<a href="@Url.Action("Index", null, new { area = string.Empty, controller = "Stores"})"> View Stores</a>
+
+<h4>Count for stores: @ViewBag.numOfStores</h4>
+<h4>Count for Customers: @ViewBag.numOfCustomers</h4>
+
 <table class="table">
     <thead>
         <tr>
@@ -32,29 +38,36 @@
             <th>
                 @Html.DisplayNameFor(model => model.DefaultStoreId)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DefaultStoreName)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DefaultStoreId)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new {item = item.CustomerId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CustomerId })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DefaultStoreId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DefaultStoreName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { item = item.CustomerId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CustomerId })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

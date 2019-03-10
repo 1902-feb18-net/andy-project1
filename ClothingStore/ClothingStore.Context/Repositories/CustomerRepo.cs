@@ -28,7 +28,8 @@ namespace ClothingStore.Context
 
         public void InsertCustomer(Lib.Customer customer)
         {
-            _db.Add(Mapper.Map(customer));
+            _db.Customer.Add(Mapper.Map(customer));
+            _db.SaveChanges();
         }
 
         public void UpdateCustomer(Lib.Customer customer)

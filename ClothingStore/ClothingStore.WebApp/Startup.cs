@@ -72,7 +72,7 @@ namespace ClothingStore.WebApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Stores}/{action=Index}/{id?}");
+                    template: "{controller=Customers}/{action=Index}/{id?}");
             });
         }
     }

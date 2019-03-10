@@ -10,27 +10,32 @@ namespace ClothingStore.WebApp.Controllers
 {
     public class CustomersController : Controller
     {
-        public Lib.ICustomerRepo cRepo { get; }
-        public Lib.IClothingStoreRepo sRepo { get; }
+        public Lib.ICustomerRepo CRepo { get; }
+        public Lib.IClothingStoreRepo SRepo { get; }
         public CustomersController(Lib.ICustomerRepo customerRepo, Lib.IClothingStoreRepo storeRepo)
         {
-            cRepo = customerRepo;
-            sRepo = storeRepo;
+            CRepo = customerRepo;
+            SRepo = storeRepo;
         }
+
+        
 
         // GET: Customer
         public ActionResult Index()
         {
-            IEnumerable<Lib.Customer> customers = cRepo.GetCustomers();
-            IEnumerable<Lib.Store> stores = sRepo.GetStores();
+            IEnumerable<Lib.Customer> customers = CRepo.GetCustomers();
+            IEnumerable<Lib.Store> stores = SRepo.GetStores();
 
             var viewModels = customers.Select(c => new Customer
             {
                 CustomerId = c.Id,
                 FirstName = c.FirstName,
                 LastName = c.LastName,
-                DefaultStoreId = c.DefaultStoreId
+                DefaultStoreId = c.DefaultStoreId,
+                DefaultStoreName = stores.Single(s => s.Id == c.DefaultStoreId).Name
             }).ToList();
+
+            ViewBag.numOfCustomers = customers.Count();
 
             return View(viewModels);
         }
@@ -44,17 +49,30 @@ namespace ClothingStore.WebApp.Controllers
         // GET: Customer/Create
         public ActionResult Create()
         {
-            return View();
+            var viewModel = new Customer
+            {
+                Stores = SRepo.GetStores().ToList()
+            };
+            return View(viewModel);
         }
 
         // POST: Customer/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Lib.Customer customer)
         {
             try
             {
                 // TODO: Add insert logic here
+                var newCustomer = new Lib.Customer
+                {
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    DefaultStoreId = customer.DefaultStoreId
+                };
+
+                CRepo.InsertCustomer(newCustomer);
+
 
                 return RedirectToAction(nameof(Index));
             }
