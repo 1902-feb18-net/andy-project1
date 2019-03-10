@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace ClothingStore.Context
 {
-    public class ProductRepo : IProducts
+    public class ProductRepo : IProductsRepo
     {
         private readonly Project0Context _db;
 

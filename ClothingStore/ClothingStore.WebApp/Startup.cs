@@ -45,6 +45,9 @@ namespace ClothingStore.WebApp
             // add my own version of this later
             //services.AddScoped<IRestaurantRepository, RestaurantRepository>();
             services.AddScoped<IClothingStoreRepo, StoreRepo>();
+            services.AddScoped<ICustomerRepo, CustomerRepo>();
+            services.AddScoped<IOrdersRepo, OrderRepo>();
+            services.AddScoped<IProductsRepo, ProductRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,7 +72,7 @@ namespace ClothingStore.WebApp
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Stores}/{action=Index}/{id?}");
             });
         }
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ClothingStore.Lib
 {
-    public interface IProducts
+    public interface IProductsRepo
     {
         IEnumerable<Products> GetProducts();
         Products GetProductsById(int productId);

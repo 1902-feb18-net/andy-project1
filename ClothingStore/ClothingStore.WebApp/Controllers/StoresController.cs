@@ -20,18 +20,14 @@ namespace ClothingStore.WebApp.Controllers
         public ActionResult Index()
         {
             IEnumerable<Lib.Store> storeList = Repo.GetStores().ToList();
-            //var viewModels = movies.Select(m => new MovieViewModel
-            //{
-            //    Id = m.Id,
-            //    Title = m.Title,
-            //    Genre = m.Genre,
-            //    ReleaseDate = m.DateReleased
-            //}).ToList();
+            
             var storeModels = storeList.Select(s => new Stores
             {
                 LocationId = s.Id,
                 StoreName = s.Name
             }).ToList();
+            // let's do quick test on viewbag
+            ViewBag.numOfStores = storeList.Count();
 
             return View(storeModels);
         }
