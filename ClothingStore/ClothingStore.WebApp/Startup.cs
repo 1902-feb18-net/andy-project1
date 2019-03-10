@@ -44,6 +44,7 @@ namespace ClothingStore.WebApp
 
             // add my own version of this later
             //services.AddScoped<IRestaurantRepository, RestaurantRepository>();
+            services.AddScoped<IClothingStoreRepo, StoreRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

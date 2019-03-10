@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClothingStore.WebApp.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +10,30 @@ namespace ClothingStore.WebApp.Controllers
 {
     public class StoresController : Controller
     {
+        public Lib.IClothingStoreRepo Repo { get; }
+
+        public StoresController(Lib.IClothingStoreRepo repo)
+        {
+            Repo = repo;
+        }
         // GET: Store
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<Lib.Store> storeList = Repo.GetStores().ToList();
+            //var viewModels = movies.Select(m => new MovieViewModel
+            //{
+            //    Id = m.Id,
+            //    Title = m.Title,
+            //    Genre = m.Genre,
+            //    ReleaseDate = m.DateReleased
+            //}).ToList();
+            var storeModels = storeList.Select(s => new Stores
+            {
+                LocationId = s.Id,
+                StoreName = s.Name
+            }).ToList();
+
+            return View(storeModels);
         }
 
         // GET: Store/Details/5

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ClothingStore.WebApp.Models.Stores>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div>
+    <form asp-action="Index" method="GET" class="form-inline">
+        <label class="sr-only" for="search">Search:</label>
+        <input type="search" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" name="search" placeholder="Search" />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StoreName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoreName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { item = item.LocationId }) |
+                @Html.ActionLink("Details", "Details", new { item = item.LocationId}) |
+                @Html.ActionLink("Delete", "Delete", new { item = item.LocationId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
