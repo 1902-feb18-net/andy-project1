@@ -136,6 +136,14 @@ INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
 INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
 	VALUES (4, 1, 4, '2019-03-03 11:40:30', 85.00)
 
+-- dummy test
+INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
+	VALUES (6, 2, 3, '2019-03-08 01:40:30', 00.00)
+
+-- haven't ran yet
+INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
+	VALUES (7, 3, 3, '2019-03-11 02:25:30', 00.00)
+
 SELECT * FROM Project0.StoreOrder;
 
 -- insert into OrderList
@@ -157,7 +165,41 @@ Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
 Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
 	VALUES(3, 2, 1, 8)
 
+Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
+	VALUES(5, 1, 1, 9)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
+	VALUES(5, 2, 1, 10)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
+	VALUES(5, 3, 1, 11)
+
+-- more test data
+Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
+	VALUES(6, 2, 1, 12)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
+	VALUES(6, 3, 3, 13)
+
+-- haven't ran yet
+Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
+	VALUES(7, 1, 5, 14)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
+	VALUES(7, 2, 3, 15)
+
 SELECT * FROM Project0.OrderList;
+
+-- display sum of orders
+Select SO.OrderID, SUM(ItemPrice * ItemBought) as sumOfOrders
+FROM Project0.StoreOrder as SO
+	JOIN Project0.OrderList as OL on SO.OrderID = OL.OrderID
+	JOIN Project0.ItemProducts as IP on OL.ItemID = IP.ItemID
+	--WHERE OL.CustomerID = SO.OrderID
+	GROUP BY SO.OrderID
+
+-- edit total to match
+UPDATE Project0.StoreOrder
+SET Total = FillNumHere
+WHERE OrderID = 6
+
+select * FROM Project0.StoreOrder
 
 -- insert into inventory
 -- add InventoryID
@@ -181,3 +223,5 @@ INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining, InventoryID)
 	VALUES(3, 2, 10, 9)
 
 Select * FROM Project0.Inventory;
+
+

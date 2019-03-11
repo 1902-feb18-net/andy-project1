@@ -20,9 +20,6 @@
 
 <a href="@Url.Action("Index", null, new { area = string.Empty, controller = "Stores"})"> View Stores</a>
 
-<h4>Count for stores: @ViewBag.numOfStores</h4>
-<h4>Count for Customers: @ViewBag.numOfCustomers</h4>
-
 <table class="table">
     <thead>
         <tr>
@@ -71,3 +68,5 @@
         }
     </tbody>
 </table>
+
+<h5>Number of Customers: @ViewBag.numOfCustomers</h5>

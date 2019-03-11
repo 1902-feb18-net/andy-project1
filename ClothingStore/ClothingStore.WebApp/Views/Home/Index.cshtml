@@ -3,6 +3,8 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to the Clothing Store</h1>
+    <p>We can all agree that ASP.NET is some kind of black magic.</p>
+
+    <a href="@Url.Action("Index", null, new { area = string.Empty, controller = "Customers"})"> View Customers or add yourself if you don't exist yet</a>
 </div>
