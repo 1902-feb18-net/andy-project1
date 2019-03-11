@@ -74,8 +74,6 @@ namespace ClothingStore.WebApp.Controllers
                 };
 
                 CRepo.InsertCustomer(newCustomer);
-
-
                 return RedirectToAction(nameof(Index));
             }
             catch
