@@ -47,12 +47,17 @@ namespace ClothingStore.WebApp.Controllers
             }).ToList();
 
             decimal? totalSum = 0;
+            decimal? maxNum = viewModels.Any() ? viewModels.Max(ma => ma.Total) : 0;
+            decimal? minNum = viewModels.Any() ? viewModels.Min(ma => ma.Total) : 0;
+
             foreach(var item in viewModels)
             {
                 totalSum += item.Total;
             }
             ViewBag.totalSum = totalSum;
             ViewBag.averageSum = totalSum / viewModels.Count();
+            ViewBag.maxNum = maxNum;
+            ViewBag.minNum = minNum;
 
             return View(viewModels);
         }

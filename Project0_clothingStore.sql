@@ -183,6 +183,8 @@ Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
 	VALUES(7, 1, 5, 14)
 Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
 	VALUES(7, 2, 3, 15)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
+	VALUES(7, 3, 3, 16)
 
 SELECT * FROM Project0.OrderList;
 
