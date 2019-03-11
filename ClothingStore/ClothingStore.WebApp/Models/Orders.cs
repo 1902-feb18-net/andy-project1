@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using ClothingStore.Lib;
 
 namespace ClothingStore.WebApp.Models
 {
@@ -29,6 +30,10 @@ namespace ClothingStore.WebApp.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName { get; set; }
+        public List<Store> Stores { get; internal set; }
+        public List<Lib.Customer> Customers { get; internal set; }
+        public List<Products> Products { get; internal set; }
+        public List<OrderList> OrderLists { get; internal set; }
 
         //public virtual Customer Customer { get; set; }
         //public virtual Location Store { get; set; }

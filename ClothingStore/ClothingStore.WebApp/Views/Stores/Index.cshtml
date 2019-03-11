@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ClothingStore.WebApp.Models.Stores>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Stores";
 }
 
 <h1>Index</h1>
@@ -33,8 +33,7 @@
                 @Html.DisplayFor(modelItem => item.StoreName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { item = item.LocationId }) |
-                @Html.ActionLink("Details", "Details", new { item = item.LocationId}) |
+                @Html.ActionLink("Details", "Details", new { item = item.LocationId})
             </td>
         </tr>
 }

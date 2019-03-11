@@ -80,9 +80,25 @@ namespace ClothingStore.Context
             return orderHistory.OrderBy(c => c.StoreId).Where(c => c.StoreId == store);
         }
 
+        public IEnumerable<Order> GetOrderById(int orderId)
+        {
+            return Mapper.Map(_db.StoreOrder.Where(o => o.OrderId == orderId));
+        }
+
         public Order GetOrderByOrderId(int orderId)
         {
             return Mapper.Map(_db.StoreOrder.Find(orderId));
+            //return Mapper.Map(_db.StoreOrder.Where(o => o.OrderId == orderId))
+        }
+
+        public IEnumerable<Lib.OrderList> GetOrderListById(int id)
+        {
+            return Mapper.Map(_db.OrderList.Where(o => o.OrderId == id));
+        }
+
+        public IEnumerable<Lib.OrderList> GetOrderLists(int orderId)
+        {
+            return Mapper.Map(_db.OrderList.Where(o => o.OrderId == orderId));
         }
 
         public IEnumerable<Order> GetOrders()
@@ -90,17 +106,22 @@ namespace ClothingStore.Context
             return Mapper.Map(_db.StoreOrder.AsNoTracking().ToList());
         }
 
-        public IEnumerable<Products> GetProductsOfOrders(int OrderId)
+        //public IEnumerable<Products> GetProductsOfOrders(int OrderId)
+        //{
+        //    List<OrderList> orderList = _db.OrderList.Where(x => x.OrderId == OrderId).ToList();
+        //    List<Products> orderProduct = new List<Products>();
+        //    ProductRepo productRepo = new ProductRepo(_db);
+        //    foreach (var item in orderList)
+        //    {
+        //        Products product = productRepo.GetProductsById(item.OrderId);
+        //        orderProduct.Add(product);
+        //    }
+        //    return orderProduct;
+        //}
+
+        public IEnumerable<Products> GetProductsOfOrders(int orderId)
         {
-            List<OrderList> orderList = _db.OrderList.Where(x => x.OrderId == OrderId).ToList();
-            List<Products> orderProduct = new List<Products>();
-            ProductRepo productRepo = new ProductRepo(_db);
-            foreach (var item in orderList)
-            {
-                Products product = productRepo.GetProductsById(item.OrderId);
-                orderProduct.Add(product);
-            }
-            return orderProduct;
+            return Mapper.Map(_db.ItemProducts.Where(i => i.ItemId == orderId));
         }
 
         public void InsertOrder(Order order)
@@ -109,7 +130,7 @@ namespace ClothingStore.Context
             _db.Add(Mapper.Map(order));
         }
 
-        public int lastId()
+        public int LastId()
         {
             Order x = Mapper.Map(_db.StoreOrder.OrderByDescending(o => o.OrderId).AsNoTracking().First());
             return x.OrderId;

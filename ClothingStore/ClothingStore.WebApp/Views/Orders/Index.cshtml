@@ -9,6 +9,9 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<h6>Total Sum: @ViewBag.totalSum</h6>
+<h6>Average: @ViewBag.averageSum</h6>
+
 <table class="table">
     <thead>
         <tr>
@@ -37,35 +40,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StoreId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StoreName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DatePurchased)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Total)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StoreId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StoreName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatePurchased)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

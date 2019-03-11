@@ -44,6 +44,7 @@ namespace ClothingStore.WebApp.Controllers
         // GET: Customer/Details/5
         public ActionResult Details(int id)
         {
+
             return View();
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ClothingStore.Lib
@@ -60,28 +61,38 @@ namespace ClothingStore.Lib
         // order time when order was placed
         public DateTime OrderTime { get; set; }
 
-        public List<OrderList> orderLists { get; set; } = new List<OrderList>();
-        public List<Products> products { get; set; } = new List<Products>();
+        public List<OrderList> OrderLists { get; set; } = new List<OrderList>();
+        public List<Products> Products { get; set; } = new List<Products>();
+
+        public decimal GetTotal(List<Lib.OrderList> orderLists, List<Lib.Products> products)
+        {
+            decimal total = 0;
+            foreach (var orderlist in orderLists)
+            {
+                total += (orderlist.ItemBought) * products.Single(p => p.ItemId == orderlist.ItemId).ItemPrice;
+            }
+            return total;
+        }
 
         // rule for credit card usage: usage of credit card is only for purchases of over 20$
         // only shirt is the only item under 20
         public void AboveTwenty(Products product)
         {
-            if(orderLists.Count < 2)
+            if(OrderLists.Count < 2)
             {
-                this.products.Add(product);
+                this.Products.Add(product);
                 this.Total += product.ItemPrice;
 
                 if(Total < 20)
                 {
                     Console.WriteLine("You need to buy 20$ or more in this store (assumption that only credit card is allowed)");
-                    this.products.Remove(product);
+                    this.Products.Remove(product);
                     this.Total -= product.ItemPrice;
                 }
                 else
                 {
                     bool insert = true;
-                    foreach (var item in orderLists)
+                    foreach (var item in OrderLists)
                     {
                         if (item.ItemId == product.ItemId)
                         {
@@ -91,7 +102,7 @@ namespace ClothingStore.Lib
                     }
                     if(insert == true)
                     {
-                        orderLists.Add(new OrderList() { ItemId = product.ItemId, ItemBought = 1 });
+                        OrderLists.Add(new OrderList() { ItemId = product.ItemId, ItemBought = 1 });
                     }
                 }
                 Console.WriteLine("product added to order");
@@ -102,12 +113,14 @@ namespace ClothingStore.Lib
             }
         }
 
+
+
         // as you make purchases, if total is 200$ or more you get 20$ off
         public void AddOrder(Products product)
         {
-            if (orderLists.Count >= 0)
+            if (OrderLists.Count >= 0)
             {
-                this.products.Add(product);
+                this.Products.Add(product);
                 this.Total += product.ItemPrice;
 
                 if (Total >= 200)
@@ -117,7 +130,7 @@ namespace ClothingStore.Lib
                 }
                 
                 bool insert = true;
-                foreach (var item in orderLists)
+                foreach (var item in OrderLists)
                 {
                     if (item.ItemId == product.ItemId)
                     {
@@ -127,7 +140,7 @@ namespace ClothingStore.Lib
                 }
                 if (insert == true)
                 {
-                    orderLists.Add(new OrderList() { ItemId = product.ItemId, ItemBought = 1 });
+                    OrderLists.Add(new OrderList() { ItemId = product.ItemId, ItemBought = 1 });
                 }
                 
                 Console.WriteLine("product added to order");
