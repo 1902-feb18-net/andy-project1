@@ -31,12 +31,10 @@ namespace ClothingStore.Context
                 entity.ToTable("Customer", "Project0");
 
                 entity.HasIndex(e => e.CustomerId)
-                    .HasName("UQ__Customer__A4AE64B92DCC6A73")
+                    .HasName("UQ__Customer__A4AE64B9EAFFF458")
                     .IsUnique();
 
-                entity.Property(e => e.CustomerId)
-                    .HasColumnName("CustomerID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
                 entity.Property(e => e.DefaultStoreId).HasColumnName("DefaultStoreID");
 
@@ -60,12 +58,10 @@ namespace ClothingStore.Context
                 entity.ToTable("Inventory", "Project0");
 
                 entity.HasIndex(e => e.InventoryId)
-                    .HasName("UQ__Inventor__F5FDE6D2AD5A0ADE")
+                    .HasName("UQ__Inventor__F5FDE6D278507813")
                     .IsUnique();
 
-                entity.Property(e => e.InventoryId)
-                    .HasColumnName("InventoryID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.InventoryId).HasColumnName("InventoryID");
 
                 entity.Property(e => e.ItemId).HasColumnName("ItemID");
 
@@ -92,12 +88,10 @@ namespace ClothingStore.Context
                 entity.ToTable("ItemProducts", "Project0");
 
                 entity.HasIndex(e => e.ItemId)
-                    .HasName("UQ__ItemProd__727E83EA76A4B669")
+                    .HasName("UQ__ItemProd__727E83EA3C0AD719")
                     .IsUnique();
 
-                entity.Property(e => e.ItemId)
-                    .HasColumnName("ItemID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.ItemId).HasColumnName("ItemID");
 
                 entity.Property(e => e.ItemDescription).HasMaxLength(200);
 
@@ -113,12 +107,10 @@ namespace ClothingStore.Context
                 entity.ToTable("Location", "Project0");
 
                 entity.HasIndex(e => e.LocationId)
-                    .HasName("UQ__Location__E7FEA476009E789D")
+                    .HasName("UQ__Location__E7FEA4762DD19E6D")
                     .IsUnique();
 
-                entity.Property(e => e.LocationId)
-                    .HasColumnName("LocationID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.LocationId).HasColumnName("LocationID");
 
                 entity.Property(e => e.StoreName)
                     .IsRequired()
@@ -130,12 +122,10 @@ namespace ClothingStore.Context
                 entity.ToTable("OrderList", "Project0");
 
                 entity.HasIndex(e => e.OrderListId)
-                    .HasName("UQ__OrderLis__BFE8AA5A3C68E6BE")
+                    .HasName("UQ__OrderLis__BFE8AA5AD36F2FA5")
                     .IsUnique();
 
-                entity.Property(e => e.OrderListId)
-                    .HasColumnName("OrderListID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.OrderListId).HasColumnName("OrderListID");
 
                 entity.Property(e => e.ItemId).HasColumnName("ItemID");
 
@@ -162,12 +152,10 @@ namespace ClothingStore.Context
                 entity.ToTable("StoreOrder", "Project0");
 
                 entity.HasIndex(e => e.OrderId)
-                    .HasName("UQ__StoreOrd__C3905BAEC08A84D3")
+                    .HasName("UQ__StoreOrd__C3905BAE396D7247")
                     .IsUnique();
 
-                entity.Property(e => e.OrderId)
-                    .HasColumnName("OrderID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 

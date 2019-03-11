@@ -5,17 +5,21 @@ using System.Threading.Tasks;
 using ClothingStore.WebApp.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace ClothingStore.WebApp.Controllers
 {
     public class CustomersController : Controller
     {
+        private readonly ILogger<CustomersController> _logger;
         public Lib.ICustomerRepo CRepo { get; }
         public Lib.IClothingStoreRepo SRepo { get; }
-        public CustomersController(Lib.ICustomerRepo customerRepo, Lib.IClothingStoreRepo storeRepo)
+        public CustomersController(Lib.ICustomerRepo customerRepo, Lib.IClothingStoreRepo storeRepo, 
+            ILogger<CustomersController> logger)
         {
             CRepo = customerRepo;
             SRepo = storeRepo;
+            _logger = logger;
         }
 
         
@@ -71,14 +75,16 @@ namespace ClothingStore.WebApp.Controllers
                     FirstName = customer.FirstName,
                     LastName = customer.LastName,
                     DefaultStoreId = customer.DefaultStoreId
+                    
                 };
 
                 CRepo.InsertCustomer(newCustomer);
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                _logger.LogError(ex.ToString());
+                return RedirectToAction("Error", "Home");
             }
         }
 

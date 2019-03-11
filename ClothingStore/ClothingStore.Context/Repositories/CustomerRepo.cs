@@ -28,16 +28,16 @@ namespace ClothingStore.Context
 
         public void InsertCustomer(Lib.Customer customer)
         {
-            _db.Customer.Add(Mapper.Map(customer));
-            _db.SaveChanges();
-            //var newCustomer = new Customer
-            //{
-            //    FirstName = customer.FirstName,
-            //    LastName = customer.LastName,
-            //    DefaultStoreId = customer.DefaultStoreId
-            //};
-            //_db.Customer.Add(newCustomer);
+            //_db.Customer.Add(Mapper.Map(customer));
             //_db.SaveChanges();
+            var newCustomer = new ClothingStore.Context.Customer
+            {
+                FirstName = customer.FirstName,
+                LastName = customer.LastName,
+                DefaultStoreId = customer.DefaultStoreId
+            };
+            _db.Customer.Add(newCustomer);
+            _db.SaveChanges();
         }
 
         public void UpdateCustomer(Lib.Customer customer)

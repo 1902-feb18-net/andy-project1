@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace ClothingStore.WebApp.Models
 {
     public class Customer
     {
         [Display(Name = "ID")]
+        [BindNever]
         public int CustomerId { get; set; }
 
         [Required]

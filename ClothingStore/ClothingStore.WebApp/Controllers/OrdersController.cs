@@ -68,12 +68,9 @@ namespace ClothingStore.WebApp.Controllers
             IEnumerable<Lib.Customer> customers = CRepo.GetCustomers();
             IEnumerable<Lib.Store> stores = SRepo.GetStores();
             IEnumerable<Lib.Order> orders = ORepo.GetOrders();
-            //List<Lib.Order> orders = ORepo.GetOrders().OrderBy(o => o.OrderId).ToList();
             List <Lib.OrderList> orderLists = ORepo.GetOrderLists(id).OrderBy(o => o.OrderId).ToList();
             List <Lib.Products> products = PRepo.GetProducts().OrderBy(p => p.ItemId).ToList();
-            //List<Lib.OrderList> orderLists 
             Lib.Order order = ORepo.GetOrderByOrderId(id);
-            //Lib.OrderList orderList = ORepo.GetOrderLists(id);
 
             var viewModels = orders.Select(o => new Orders
             {
@@ -83,11 +80,7 @@ namespace ClothingStore.WebApp.Controllers
                 DatePurchased = o.DatePurchased,
                 Total = o.Total,
                 //double total = db.tblCustomerOrders.Where(x => x.CustomerID == customer.CustomerID).Select(t => t.Amount ?? 0).Sum();
-                //Total = orderLists.Where(ol => ol.OrderId == o.CustomerId).Where(i => i.ItemId == )
-                //Total = ORepo.GetOrderByOrderId(order.OrderId).GetTotal(ORepo.GetOrderById(order.OrderId).ToList(), products.ToList()),
-                //Total = ORepo.GetOrderByOrderId(order.OrderId).GetTotal(ORepo.GetProductsOfOrders(order.OrderId).ToList(), products.ToList())
-                //Total = ORepo.GetOrderByOrderId(order.OrderId).GetTotal(ORepo.GetOrderById(order.OrderId).ToList(), products.ToList())
-                //Total = ORepo.GetOrderByOrderId(order.OrderId).GetTotal(ORepo.GetOrderById(order.OrderId).ToList(), products.ToList())
+                
                 StoreName = stores.Single(s => s.Id == o.StoreId).Name,
                 FirstName = customers.Single(c => c.Id == o.CustomerId).FirstName,
                 LastName = customers.Single(c => c.Id == o.CustomerId).LastName,

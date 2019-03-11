@@ -8,19 +8,19 @@ GO
 
 -- create tables
 CREATE TABLE Project0.Location (
-	LocationID INT NOT NULL UNIQUE,
+	LocationID INT NOT NULL UNIQUE IDENTITY,
 	StoreName NVARCHAR(100) NOT NULL,
 );
 
 CREATE TABLE Project0.Customer (
-	CustomerID INT NOT NULL UNIQUE,
+	CustomerID INT NOT NULL UNIQUE IDENTITY,
 	FirstName NVARCHAR(50) NOT NULL,
 	LastName NVARCHAR(50) NOT NULL,
 	DefaultStoreID INT NOT NULL
 );
 
 CREATE TABLE Project0.StoreOrder (
-	OrderID INT NOT NULL UNIQUE,
+	OrderID INT NOT NULL UNIQUE IDENTITY,
 	StoreID INT NOT NULL,
 	CustomerID INT NOT NULL,
 	DatePurchased DATETIME2 NOT NULL,
@@ -31,18 +31,18 @@ CREATE TABLE Project0.OrderList (
 	OrderID INT NOT NULL,
 	ItemID INT NOT NULL,
 	ItemBought INT NOT NULL,
-	OrderListID INT NOT NULL UNIQUE
+	OrderListID INT NOT NULL UNIQUE IDENTITY
 );
 
 CREATE TABLE Project0.Inventory (
 	StoreID INT NOT NULL,
 	ItemID INT NOT NULL, -- should FK to ItemProducts
 	ItemRemaining INT NOT NULL,
-	InventoryID INT NOT NULL UNIQUE
+	InventoryID INT NOT NULL UNIQUE IDENTITY
 );
 
 CREATE TABLE Project0.ItemProducts (
-	ItemID INT NOT NULL UNIQUE,
+	ItemID INT NOT NULL UNIQUE IDENTITY,
 	ItemName NVARCHAR(100) NOT NULL,
 	ItemPrice MONEY NOT NULL,
 	ItemDescription NVARCHAR(200),
@@ -92,6 +92,14 @@ ALTER TABLE Project0.OrderList
 ALTER TABLE Project0.OrderList 
 	ADD CONSTRAINT FK_Orderlist_Item_ID FOREIGN KEY (ItemID) REFERENCES Project0.ItemProducts (ItemID);
 
+SET IDENTITY_INSERT Project0.Project0.Customer on;
+SET IDENTITY_INSERT Project0.Project0.Inventory on;
+SET IDENTITY_INSERT Project0.Project0.ItemProducts on;
+SET IDENTITY_INSERT Project0.Project0.Location on;
+SET IDENTITY_INSERT Project0.Project0.OrderList on;
+SET IDENTITY_INSERT Project0.Project0.StoreOrder on;
+
+
 -- add some things into the DB now
 
 -- inserts for store
@@ -140,9 +148,9 @@ INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
 INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
 	VALUES (6, 2, 3, '2019-03-08 01:40:30', 00.00)
 
--- haven't ran yet
-INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
-	VALUES (7, 3, 3, '2019-03-11 02:25:30', 00.00)
+---- haven't ran yet
+--INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
+--	VALUES (7, 3, 3, '2019-03-11 02:25:30', 00.00)
 
 SELECT * FROM Project0.StoreOrder;
 
@@ -179,12 +187,12 @@ Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
 	VALUES(6, 3, 3, 13)
 
 -- haven't ran yet
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(7, 1, 5, 14)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(7, 2, 3, 15)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(7, 3, 3, 16)
+--Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
+--	VALUES(7, 1, 5, 14)
+--Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
+--	VALUES(7, 2, 3, 15)
+--Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
+--	VALUES(7, 3, 3, 16)
 
 SELECT * FROM Project0.OrderList;
 
@@ -197,9 +205,9 @@ FROM Project0.StoreOrder as SO
 	GROUP BY SO.OrderID
 
 -- edit total to match
-UPDATE Project0.StoreOrder
-SET Total = FillNumHere
-WHERE OrderID = 6
+--UPDATE Project0.StoreOrder
+--SET Total = FillNumHere
+--WHERE OrderID = 6
 
 select * FROM Project0.StoreOrder
 
