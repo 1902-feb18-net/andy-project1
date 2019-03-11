@@ -189,11 +189,11 @@ Insert Project0.OrderList(OrderID, ItemID, ItemBought)
 
 -- haven't ran yet
 --Insert Project0.OrderList(OrderID, ItemID, ItemBought)
---	VALUES(7, 1, 5)
+--	VALUES(6, 1, 5)
 --Insert Project0.OrderList(OrderID, ItemID, ItemBought)
---	VALUES(7, 2, 3)
+--	VALUES(6, 2, 3)
 --Insert Project0.OrderList(OrderID, ItemID, ItemBought)
---	VALUES(7, 3, 3)
+--	VALUES(6, 3, 3)
 
 SELECT * FROM Project0.OrderList;
 
@@ -206,9 +206,9 @@ FROM Project0.StoreOrder as SO
 	GROUP BY SO.OrderID
 
 -- edit total to match
---UPDATE Project0.StoreOrder
---SET Total = FillNumHere
---WHERE OrderID = numHere
+UPDATE Project0.StoreOrder
+SET Total = someNum
+WHERE OrderID = 6
 
 select * FROM Project0.StoreOrder
 

@@ -9,7 +9,7 @@ using Moq;
 
 namespace ClothingStore.Testing
 {
-    public class UnitTest1
+    public class CustomerTest
     {
         [Fact]
         public void Test1()

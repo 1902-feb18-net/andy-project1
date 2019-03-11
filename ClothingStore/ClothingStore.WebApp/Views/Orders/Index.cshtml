@@ -9,10 +9,6 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<h6>Total Sum: @ViewBag.totalSum</h6>
-<h6>Average: @ViewBag.averageSum</h6>
-<h6>Smallest Order: @ViewBag.minNum</h6>
-<h6>Largest Order: @ViewBag.maxNum</h6>
 
 <table class="table">
     <thead>
@@ -67,11 +63,17 @@
                     @Html.DisplayFor(modelItem => item.Total)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+                    @Html.ActionLink("Details", "Details", new { id = item.OrderId })
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<div>
+    <h5><strong>Basic Statistics</strong></h5>
+    <h6>Total Sum: @ViewBag.totalSum</h6>
+    <h6>Average: @ViewBag.averageSum</h6>
+    <h6>Smallest Order: @ViewBag.minNum</h6>
+    <h6>Largest Order: @ViewBag.maxNum</h6>
+</div>
