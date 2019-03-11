@@ -87,7 +87,7 @@ namespace ClothingStore.Context
 
         public IEnumerable<Order> GetOrders()
         {
-            return Mapper.Map(_db.StoreOrder.AsNoTracking());
+            return Mapper.Map(_db.StoreOrder.AsNoTracking().ToList());
         }
 
         public IEnumerable<Products> GetProductsOfOrders(int OrderId)

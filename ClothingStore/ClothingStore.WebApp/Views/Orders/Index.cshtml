@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<ClothingStore.WebApp.Models.Orders>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Orders";
 }
 
-<h1>Index</h1>
+<h1>Orders</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -19,7 +19,13 @@
                 @Html.DisplayNameFor(model => model.StoreId)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.StoreName)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DatePurchased)
@@ -40,7 +46,13 @@
                 @Html.DisplayFor(modelItem => item.StoreId)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.StoreName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.CustomerId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DatePurchased)
@@ -49,9 +61,9 @@
                 @Html.DisplayFor(modelItem => item.Total)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
             </td>
         </tr>
 }

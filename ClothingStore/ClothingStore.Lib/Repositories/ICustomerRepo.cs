@@ -10,6 +10,8 @@ namespace ClothingStore.Lib
         IEnumerable<Customer> GetCustomerByName(string fName, string lName);
         void InsertCustomer(Customer customer);
         void UpdateCustomer(Customer customer);
+
+        Customer GetCustomerById(int id);
         //void DeleteCustomer(int customerId);
         void SetDefaultStore(int storeId);
         void Save();

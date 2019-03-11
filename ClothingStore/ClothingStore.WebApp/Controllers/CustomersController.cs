@@ -36,6 +36,7 @@ namespace ClothingStore.WebApp.Controllers
             }).ToList();
 
             ViewBag.numOfCustomers = customers.Count();
+            ViewBag.numOfStores = stores.Count();
 
             return View(viewModels);
         }
@@ -85,23 +86,49 @@ namespace ClothingStore.WebApp.Controllers
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
+            //Lib.Restaurant libRest = Repo.GetRestaurantById(id);
+            //var webRest = new Restaurant
+            //{
+            //    Id = libRest.Id,
+            //    Name = libRest.Name
+            //};
+
+            Lib.Customer libRest = CRepo.GetCustomerById(id);
+            var webRest = new Customer
+            {
+                CustomerId = libRest.Id,
+                FirstName = libRest.FirstName,
+                LastName = libRest.LastName,
+                DefaultStoreId = libRest.DefaultStoreId
+            };
             return View();
         }
 
         // POST: Customer/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        //[FromRoute] int id, [Bind("Name")]Restaurant restaurant
+        public ActionResult Edit([FromRoute]int id, [Bind("Name")] Customer customer)
         {
             try
             {
-                // TODO: Add update logic here
+                // edit does not work
 
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    Lib.Customer libRest = CRepo.GetCustomerById(id);
+                    libRest.FirstName = customer.FirstName;
+                    libRest.LastName = customer.LastName;
+                    libRest.DefaultStoreId = customer.DefaultStoreId;
+                    CRepo.Save();
+
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(customer);
             }
             catch
             {
-                return View();
+                return View(customer);
             }
         }
     }

@@ -10,13 +10,25 @@ namespace ClothingStore.WebApp.Models
     {
         [Display(Name ="Order ID")]
         public int OrderId { get; set; }
+
         [Display(Name = "Store ID")]
         public int StoreId { get; set; }
+
         [Display(Name ="Customer ID")]
         public int CustomerId { get; set; }
+
         [Display(Name ="Date Purchased")]
         public DateTime DatePurchased { get; set; }
+
+        [Display(Name = "Total Costs")]
+        [Range(double.Epsilon, double.MaxValue)]
         public decimal? Total { get; set; }
+
+        [Display(Name = "Store Name")]
+        public string StoreName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string FullName { get; set; }
 
         //public virtual Customer Customer { get; set; }
         //public virtual Location Store { get; set; }

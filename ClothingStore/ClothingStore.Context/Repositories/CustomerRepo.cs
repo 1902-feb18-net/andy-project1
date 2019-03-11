@@ -68,5 +68,14 @@ namespace ClothingStore.Context
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+
+        public Lib.Customer GetCustomerById(int id)
+        {
+            // disable pointless tracking for performance
+            //return Mapper.Map(_db.Customer.Include(r => r.CustomerId)
+            //    .AsNoTracking().First(r => r.CustomerId == id));
+            //return _db.Customer.First(c => c.CustomerId == id)
+            return null;
+        }
     }
 }
