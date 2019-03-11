@@ -92,23 +92,24 @@ ALTER TABLE Project0.OrderList
 ALTER TABLE Project0.OrderList 
 	ADD CONSTRAINT FK_Orderlist_Item_ID FOREIGN KEY (ItemID) REFERENCES Project0.ItemProducts (ItemID);
 
-SET IDENTITY_INSERT Project0.Project0.Customer on;
-SET IDENTITY_INSERT Project0.Project0.Inventory on;
-SET IDENTITY_INSERT Project0.Project0.ItemProducts on;
+SET IDENTITY_INSERT Project0.Project0 on;
+SET IDENTITY_INSERT Project0.Inventory on;
+
 SET IDENTITY_INSERT Project0.Project0.Location on;
-SET IDENTITY_INSERT Project0.Project0.OrderList on;
 SET IDENTITY_INSERT Project0.Project0.StoreOrder on;
+SET IDENTITY_INSERT Project0.Project0.OrderList on;
+SET IDENTITY_INSERT Project0.Project0.ItemProducts on;
 
 
 -- add some things into the DB now
 
 -- inserts for store
-INSERT Project0.Location(LocationID, StoreName)
-	VALUES(1, 'MallWart')
-INSERT Project0.Location(LocationID, StoreName)
-	VALUES(2, 'CJNickel')
-INSERT Project0.Location(LocationID, StoreName)
-	VALUES(3, 'Apple Republic')
+INSERT Project0.Location(StoreName)
+	VALUES('MallWart')
+INSERT Project0.Location(StoreName)
+	VALUES('CJNickel')
+INSERT Project0.Location(StoreName)
+	VALUES('Apple Republic')
 
 SELECT * FROM Project0.Location;
 
@@ -125,74 +126,74 @@ INSERT Project0.Customer(CustomerID, FirstName, LastName, DefaultStoreID)
 SELECT * FROM Project0.Customer;
 
 -- insert ItemProducts
-Insert Project0.ItemProducts(ItemID, ItemName, ItemDescription, ItemPrice)
-	VALUES(1, 'shirt', 'short sleeves t-shirt', 15.00)
-Insert Project0.ItemProducts(ItemID, ItemName, ItemDescription, ItemPrice)
-	VALUES(2, 'pants', 'shorts up to the knees', 35.00)
-Insert Project0.ItemProducts(ItemID, ItemName, ItemDescription, ItemPrice)
-	VALUES(3, 'shoes', 'standard shoes, not Wide', 55.00)
+Insert Project0.ItemProducts(ItemName, ItemDescription, ItemPrice)
+	VALUES('shirt', 'short sleeves t-shirt', 15.00)
+Insert Project0.ItemProducts(ItemName, ItemDescription, ItemPrice)
+	VALUES('pants', 'shorts up to the knees', 35.00)
+Insert Project0.ItemProducts(ItemName, ItemDescription, ItemPrice)
+	VALUES('shoes', 'standard shoes, not Wide', 55.00)
 
 SELECT * FROM Project0.ItemProducts;
 
 -- insert into StoreOrder
-INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
-	VALUES (1, 1, 1, '2019-03-01 12:30:30', 185.00)
-INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
-	VALUES (2, 2, 2, '2019-03-02 14:30:30', 115.00)
-INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
-	VALUES (5, 3, 3, '2019-03-02 08:30:30', 105.00)
-INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
-	VALUES (4, 1, 4, '2019-03-03 11:40:30', 85.00)
+INSERT Project0.StoreOrder(StoreID, CustomerID, DatePurchased, Total)
+	VALUES (1, 1, '2019-03-01 12:30:30', 185.00)
+INSERT Project0.StoreOrder(StoreID, CustomerID, DatePurchased, Total)
+	VALUES (2, 2, '2019-03-02 14:30:30', 115.00)
+INSERT Project0.StoreOrder(StoreID, CustomerID, DatePurchased, Total)
+	VALUES (3, 3, '2019-03-02 08:30:30', 105.00)
+INSERT Project0.StoreOrder(StoreID, CustomerID, DatePurchased, Total)
+	VALUES (1, 4, '2019-03-03 11:40:30', 85.00)
 
 -- dummy test
-INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
-	VALUES (6, 2, 3, '2019-03-08 01:40:30', 00.00)
+INSERT Project0.StoreOrder(StoreID, CustomerID, DatePurchased, Total)
+	VALUES (2, 3, '2019-03-08 01:40:30', 00.00)
 
 ---- haven't ran yet
---INSERT Project0.StoreOrder(OrderID, StoreID, CustomerID, DatePurchased, Total)
---	VALUES (7, 3, 3, '2019-03-11 02:25:30', 00.00)
+--INSERT Project0.StoreOrder(StoreID, CustomerID, DatePurchased, Total)
+--	VALUES (3, 3, '2019-03-11 02:25:30', 00.00)
 
 SELECT * FROM Project0.StoreOrder;
 
 -- insert into OrderList
 -- add OrderListID
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(1, 1, 4, 1)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(1, 2, 2, 2)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(1, 3, 1, 3)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(2, 1, 3, 4)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(2, 2, 2, 5)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(3, 3, 1, 6)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(4, 1, 1, 7)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(3, 2, 1, 8)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(1, 1, 4)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(1, 2, 2)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(1, 3, 1)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(2, 1, 3)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(2, 2, 2)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(3, 3, 1)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(4, 1, 1)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(3, 2, 1)
 
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(5, 1, 1, 9)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(5, 2, 1, 10)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(5, 3, 1, 11)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(5, 1, 1)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(5, 2, 1)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(5, 3, 1)
 
 -- more test data
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(6, 2, 1, 12)
-Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
-	VALUES(6, 3, 3, 13)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(6, 2, 1)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(6, 3, 3)
 
 -- haven't ran yet
---Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
---	VALUES(7, 1, 5, 14)
---Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
---	VALUES(7, 2, 3, 15)
---Insert Project0.OrderList(OrderID, ItemID, ItemBought, OrderListID)
---	VALUES(7, 3, 3, 16)
+--Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+--	VALUES(7, 1, 5)
+--Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+--	VALUES(7, 2, 3)
+--Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+--	VALUES(7, 3, 3)
 
 SELECT * FROM Project0.OrderList;
 
@@ -207,30 +208,30 @@ FROM Project0.StoreOrder as SO
 -- edit total to match
 --UPDATE Project0.StoreOrder
 --SET Total = FillNumHere
---WHERE OrderID = 6
+--WHERE OrderID = numHere
 
 select * FROM Project0.StoreOrder
 
 -- insert into inventory
 -- add InventoryID
-INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining, InventoryID)
-	VALUES(1, 1, 50, 1)
-INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining, InventoryID)
-	VALUES(1, 2, 20, 2)
-INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining, InventoryID)
-	VALUES(1, 2, 10, 3)
-INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining, InventoryID)
-	VALUES(2, 1, 50, 4)
-INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining, InventoryID)
-	VALUES(2, 2, 20, 5)
-INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining, InventoryID)
-	VALUES(2, 2, 10, 6)
-INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining, InventoryID)
-	VALUES(3, 1, 50, 7)
-INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining, InventoryID)
-	VALUES(3, 2, 20, 8)
-INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining, InventoryID)
-	VALUES(3, 2, 10, 9)
+INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining)
+	VALUES(1, 1, 50)
+INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining)
+	VALUES(1, 2, 20)
+INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining)
+	VALUES(1, 2, 10)
+INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining)
+	VALUES(2, 1, 50)
+INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining)
+	VALUES(2, 2, 20)
+INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining)
+	VALUES(2, 2, 10)
+INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining)
+	VALUES(3, 1, 50)
+INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining)
+	VALUES(3, 2, 20)
+INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining)
+	VALUES(3, 2, 10)
 
 Select * FROM Project0.Inventory;
 

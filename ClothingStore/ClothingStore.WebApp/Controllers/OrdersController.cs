@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ClothingStore.WebApp.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ClothingStore.WebApp.Controllers
 {
@@ -40,6 +41,7 @@ namespace ClothingStore.WebApp.Controllers
                 CustomerId = o.CustomerId,
                 DatePurchased = o.DatePurchased,
                 Total = o.Total,
+                //Total = orders.Select(ORepo.GetOrderLists(o.OrderId).)
                 StoreName = stores.Single(s => s.Id == o.StoreId).Name,
                 FirstName = customers.Single(c => c.Id == o.CustomerId).FirstName,
                 LastName = customers.Single(c => c.Id == o.CustomerId).LastName,
@@ -72,6 +74,8 @@ namespace ClothingStore.WebApp.Controllers
             List <Lib.Products> products = PRepo.GetProducts().OrderBy(p => p.ItemId).ToList();
             Lib.Order order = ORepo.GetOrderByOrderId(id);
 
+
+
             var viewModels = orders.Select(o => new Orders
             {
                 OrderId = o.OrderId,
@@ -95,6 +99,8 @@ namespace ClothingStore.WebApp.Controllers
         {
             List<Lib.Products> products = PRepo.GetProducts().OrderBy(p => p.ItemId).ToList();
             List<Lib.OrderList> orderLists = new List<Lib.OrderList>();
+            List<Lib.Customer> Customers = CRepo.GetCustomers().ToList();
+
             foreach (var product in products)
             {
                 orderLists.Add(new Lib.OrderList
@@ -106,10 +112,17 @@ namespace ClothingStore.WebApp.Controllers
                 });
             }
 
+            List<SelectListItem> customerItems = new List<SelectListItem>();
+            foreach(var customer in Customers)
+            {
+                customerItems.Add(new SelectListItem() { Text = customer.FirstName + " " + customer.LastName, Value = customer.Id.ToString() });
+
+            }
+
             var viewModel = new Orders
             {
                 Stores = SRepo.GetStores().ToList(),
-                Customers = CRepo.GetCustomers().ToList(),
+                customerItems = customerItems,
                 Products = products,
                 OrderLists = orderLists
             };

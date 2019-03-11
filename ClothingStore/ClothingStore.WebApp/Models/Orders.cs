@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using ClothingStore.Lib;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ClothingStore.WebApp.Models
 {
@@ -34,6 +35,7 @@ namespace ClothingStore.WebApp.Models
         public List<Lib.Customer> Customers { get; internal set; }
         public List<Products> Products { get; internal set; }
         public List<OrderList> OrderLists { get; internal set; }
+        public List<SelectListItem> customerItems { get; internal set; }
 
         //public virtual Customer Customer { get; set; }
         //public virtual Location Store { get; set; }

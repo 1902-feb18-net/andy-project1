@@ -21,6 +21,23 @@ namespace ClothingStore.Context
         //    _db.Remove(_db.StoreOrder.Find(orderId));
         //}
 
+        //public List<OrderTotal> GetTotalFromId(int orderId)
+        //{
+        //    List<OrderTotal> Total = new List<OrderTotal>();
+
+        //    Total = _db.StoreOrder.FromSql(
+        //        "Select SO.OrderID, SUM(ItemPrice * ItemBought) as sumOfOrders" +
+        //        "FROM Project0.StoreOrder as SO" +
+
+        //            "JOIN Project0.OrderList as OL on SO.OrderID = OL.OrderID" +
+
+        //            "JOIN Project0.ItemProducts as IP on OL.ItemID = IP.ItemID" +
+        //            "WHERE OL.CustomerID = SO.OrderID" +
+
+        //            "GROUP BY SO.OrderID"
+        //        ).ToList();
+        //}
+        
         public void DisplayOrderDetails(int orderId)
         {
             Order orderToDisplay = GetOrderByOrderId(orderId);
