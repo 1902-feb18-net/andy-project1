@@ -12,7 +12,25 @@ pool:
 variables:
   buildConfiguration: 'Release'
   solutionPath: './ClothingStore'
+  appProjectPath: 'ClothingStore/ClothingStore.WebApp/'
 
 steps:
 - script: dotnet build "$(solutionPath)" --configuration $(buildConfiguration)
   displayName: 'dotnet build'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: publish
+    projects: '$(appProjectPath)'
+    publishWebProjects: false
+    arguments: >-
+      --configuration $(buildConfiguration)
+      --output $(System.DefaultWorkingDirectory)/publish
+    zipAfterPublish: true
+  displayName: dotnet publish
+- task: AzureRmWebAppDeployment@3
+  inputs:
+    # based on name given to azure resource manager service connection
+    azureSubscription: 'andy-azur'
+    # the name of app service resource in azure (also subdomain of URL)
+    WebAppName: 'ajlclothingstore'
+    Package: $(System.DefaultWorkingDirectory)/publish/*.zip
