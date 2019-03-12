@@ -150,8 +150,8 @@ INSERT Project0.StoreOrder(StoreID, CustomerID, DatePurchased, Total)
 	VALUES (2, 3, '2019-03-08 01:40:30', 00.00)
 
 ---- haven't ran yet
---INSERT Project0.StoreOrder(StoreID, CustomerID, DatePurchased, Total)
---	VALUES (3, 3, '2019-03-11 02:25:30', 00.00)
+INSERT Project0.StoreOrder(StoreID, CustomerID, DatePurchased, Total)
+	VALUES (3, 3, '2019-03-11 02:25:30', 00.00)
 
 SELECT * FROM Project0.StoreOrder;
 
@@ -188,12 +188,12 @@ Insert Project0.OrderList(OrderID, ItemID, ItemBought)
 	VALUES(6, 3, 3)
 
 -- haven't ran yet
---Insert Project0.OrderList(OrderID, ItemID, ItemBought)
---	VALUES(6, 1, 5)
---Insert Project0.OrderList(OrderID, ItemID, ItemBought)
---	VALUES(6, 2, 3)
---Insert Project0.OrderList(OrderID, ItemID, ItemBought)
---	VALUES(6, 3, 3)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(6, 1, 5)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(6, 2, 3)
+Insert Project0.OrderList(OrderID, ItemID, ItemBought)
+	VALUES(6, 3, 3)
 
 SELECT * FROM Project0.OrderList;
 
@@ -207,7 +207,7 @@ FROM Project0.StoreOrder as SO
 
 -- edit total to match
 UPDATE Project0.StoreOrder
-SET Total = someNum
+SET Total = 345.00
 WHERE OrderID = 6
 
 select * FROM Project0.StoreOrder
