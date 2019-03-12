@@ -1,5 +1,5 @@
 - task: AzureRmWebAppDeployment@3
   inputs:
-    azureSubscription: 'http://ajlclothingstore.azurewebsites.net/'
+    azureSubscription: 'baff5684-b5bc-4b1e-a208-65e7e3a16701'
     WebAppName: 'ajlclothingstore'
     Package: $(System.ArtifactsDirectory)/**/*.zip
