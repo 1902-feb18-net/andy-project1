@@ -12,6 +12,10 @@ namespace ClothingStore.WebApp.Controllers
     {
         public IActionResult Index()
         {
+            //if(TempData.Peek("Order Id") != null)
+            //{
+            //    TempData.Remove("Order Id");
+            //}
             return View();
         }
 

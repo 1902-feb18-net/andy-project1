@@ -39,9 +39,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ItemDescription)
             </td>
-            <td>
+            @*<td>
                 @Html.ActionLink("Details", "Details", new { id = item.ItemId })
-            </td>
+            </td>*@
         </tr>
 }
     </tbody>
@@ -49,8 +49,7 @@
 
 <h3>Customization options:</h3>
 <ul>
-    <li>Long Sleeves: +5$</li>
-    <li>Long Pants: +5$</li>
-    <li>Wide Shoes: +15$</li>
-    <li>Non-Cotton Shirts and pants: + 10$</li>
+    <li>Standard: +0$</li>
+    <li>Leather: +10$</li>
+    <li>Silk: +20$</li>
 </ul>

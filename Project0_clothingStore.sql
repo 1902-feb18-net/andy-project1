@@ -92,13 +92,13 @@ ALTER TABLE Project0.OrderList
 ALTER TABLE Project0.OrderList 
 	ADD CONSTRAINT FK_Orderlist_Item_ID FOREIGN KEY (ItemID) REFERENCES Project0.ItemProducts (ItemID);
 
-SET IDENTITY_INSERT Project0.Project0 on;
-SET IDENTITY_INSERT Project0.Inventory on;
-
-SET IDENTITY_INSERT Project0.Project0.Location on;
-SET IDENTITY_INSERT Project0.Project0.StoreOrder on;
+SET IDENTITY_INSERT Project0.Project0 off;
+SET IDENTITY_INSERT Project0.Inventory off;
+SET IDENTITY_INSERT Project0.Customer off;
+SET IDENTITY_INSERT Project0.Project0.Location off;
+SET IDENTITY_INSERT Project0.Project0.StoreOrder off;
 SET IDENTITY_INSERT Project0.Project0.OrderList on;
-SET IDENTITY_INSERT Project0.Project0.ItemProducts on;
+SET IDENTITY_INSERT Project0.Project0.ItemProducts off;
 
 
 -- add some things into the DB now
@@ -236,3 +236,9 @@ INSERT Project0.Inventory(StoreID, ItemID, ItemRemaining)
 Select * FROM Project0.Inventory;
 
 
+Select * From Project0.Customer;
+Select * From Project0.Inventory;
+Select * From Project0.ItemProducts;
+Select * From Project0.Location;
+Select * From Project0.OrderList;
+Select * From Project0.StoreOrder;

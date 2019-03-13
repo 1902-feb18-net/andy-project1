@@ -163,7 +163,8 @@ namespace ClothingStore.WebApp.Controllers
                 };
 
                 int orderCount = ORepo.GetOrders().Count() + 2;
-                TempData["Order Id"] = orderCount;
+                int oid = ORepo.GetOrders().Last().OrderId + 1;
+                TempData["Order Id"] = oid;
                 ORepo.InsertOrder(ord);
 
                 return RedirectToAction(nameof(Index));
@@ -177,7 +178,6 @@ namespace ClothingStore.WebApp.Controllers
         // let's add in our AddProduct here
         public ActionResult AddProduct(Orders order)
         {
-            //Order.Games = GameRepo.GetAllGames().ToList();
             order.Products = PRepo.GetProducts().ToList();
             order.Specials = new Dictionary<int, string>();
             order.Specials.Add(1, "Standard");
@@ -219,13 +219,6 @@ namespace ClothingStore.WebApp.Controllers
                 Order.OrderList.ItemBought = Order.OrderList.ItemBought;
                 Order.OrderList.OrderId = (int)TempData.Peek("Order Id");
 
-                //Order.NextOrderGame.Game = GameRepo.GetGameById(Order.NextOrderGame.GameId);
-                //Order.NextOrderGame.Price = Order.NextOrderGame.GetCostOfPurchase();
-                //Order.NextOrderGame.Game.Name = Order.NextOrderGame.Game.Name;
-                //Order.NextOrderGame.OrderId = _db.Orders.Max(o => o.OrderId) + 1;
-
-                //var OrderItems = new List<OrderGames>();
-                //OrderItems.AddRange(_db.OrderGames.Where(o => o.OrderId == _db.Orders.Max(r => r.OrderId) + 1).ToList());
                 ORepo.InsertOrderlist(Order.OrderList);
                 return RedirectToAction(nameof(Index));
             }
