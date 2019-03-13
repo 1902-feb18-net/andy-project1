@@ -49,81 +49,12 @@
                         asp-items="@(new SelectList(Model.Stores, "Id", "Name"))" class="form-control"></select>
             </div>
 
-
-            @*@for (int i = 0; i < Model.Products.Count; i++)
-            {
-                @Html.HiddenFor(model => model.Products[i].ItemId)
-                @Html.HiddenFor(model => model.Products[i].ItemName)
-                @Html.HiddenFor(model => model.Products[i].ItemPrice)
-                @Html.HiddenFor(model => model.Products[i].ItemDescription)
-                @Html.HiddenFor(model => model.Products[i].orderList)
-            }*@
-
-            @*@for (int i = 0; i < Model.OrderGames.Count; i++)
-        {
-            @Html.HiddenFor(model => Model.OrderGames[i].OrderId)
-            @Html.HiddenFor(model => Model.OrderGames[i].GameId)
-            @Html.HiddenFor(model => Model.OrderGames[i].Edition)
-            @Html.HiddenFor(model => Model.OrderGames[i].GameQuantity)
-            @Html.HiddenFor(model => Model.OrderGames[i].Price)
-        }*@
-
-            @*<div class="form-group">
-            <label asp-for="CustomerId" class="control-label"></label>
-            <select asp-for="CustomerId"
-                    asp-items="@(new SelectList(Model.customerItems, "Id", "Text"))" class="form-control" ></select>
-
-        </div>*@
-
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
-
-
-
-@*@if (Model.Products != null)
-{
-    @foreach (var item in Model.Products)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemPrice)
-            </td>
-            <td>
-                @if (item.ItemId == 1)
-                {
-                    <p>@item.ItemDescription</p>
-                }
-                else if (item.ItemId == 2)
-                {
-                    <p>@item.ItemDescription</p>
-                }
-                else if (item.ItemId == 3)
-                {
-                    <p>@item.ItemDescription</p>
-                }
-                else
-                {
-                    <p>Invalid Edition</p>
-                }
-
-            </td>
-        </tr>
-    }
-}*@
-
-@*<div>
-    <form asp-action="AddProduct">
-        <input type="submit" value="AddProduct" class="btn btn-info" />
-    </form>
-</div>*@
 
 <div>
     <a asp-action="Index">Back to List</a>

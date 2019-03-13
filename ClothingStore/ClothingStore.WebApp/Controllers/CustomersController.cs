@@ -91,12 +91,6 @@ namespace ClothingStore.WebApp.Controllers
         // GET: Customer/Edit/5
         public ActionResult Edit(int id)
         {
-            //Lib.Restaurant libRest = Repo.GetRestaurantById(id);
-            //var webRest = new Restaurant
-            //{
-            //    Id = libRest.Id,
-            //    Name = libRest.Name
-            //};
 
             Lib.Customer libRest = CRepo.GetCustomerById(id);
             var webRest = new Customer
