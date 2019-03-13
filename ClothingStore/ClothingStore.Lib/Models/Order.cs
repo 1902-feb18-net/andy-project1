@@ -114,43 +114,6 @@ namespace ClothingStore.Lib
         }
 
 
-
-        // as you make purchases, if total is 200$ or more you get 20$ off
-        public void AddOrder(Products product)
-        {
-            if (OrderLists.Count >= 0)
-            {
-                this.Products.Add(product);
-                this.Total += product.ItemPrice;
-
-                if (Total >= 200)
-                {
-                    Console.WriteLine("You get 20$ off for purchases of 200$ or more!");
-                    this.Total -= product.ItemPrice - 20;
-                }
-                
-                bool insert = true;
-                foreach (var item in OrderLists)
-                {
-                    if (item.ItemId == product.ItemId)
-                    {
-                        insert = false;
-                        item.ItemBought++;
-                    }
-                }
-                if (insert == true)
-                {
-                    OrderLists.Add(new OrderList() { ItemId = product.ItemId, ItemBought = 1 });
-                }
-                
-                Console.WriteLine("product added to order");
-            }
-            else
-            {
-                Console.WriteLine("Sorry, some error has occured");
-            }
-        }
-
         // instead of repeating myself, checking argument exception here
         public static void CheckArgException(string val)
         {
