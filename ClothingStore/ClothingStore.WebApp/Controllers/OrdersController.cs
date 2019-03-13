@@ -41,7 +41,6 @@ namespace ClothingStore.WebApp.Controllers
                 CustomerId = o.CustomerId,
                 DatePurchased = o.DatePurchased,
                 Total = o.Total,
-                //Total = orders.Select(ORepo.GetOrderLists(o.OrderId).)
                 StoreName = stores.Single(s => s.Id == o.StoreId).Name,
                 FirstName = customers.Single(c => c.Id == o.CustomerId).FirstName,
                 LastName = customers.Single(c => c.Id == o.CustomerId).LastName,
@@ -83,7 +82,6 @@ namespace ClothingStore.WebApp.Controllers
                 CustomerId = o.CustomerId,
                 DatePurchased = o.DatePurchased,
                 Total = o.Total,
-                //double total = db.tblCustomerOrders.Where(x => x.CustomerID == customer.CustomerID).Select(t => t.Amount ?? 0).Sum();
                 
                 StoreName = stores.Single(s => s.Id == o.StoreId).Name,
                 FirstName = customers.Single(c => c.Id == o.CustomerId).FirstName,

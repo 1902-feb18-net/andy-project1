@@ -1,0 +1,14 @@
+E
+CC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Class1.csN
+LC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\Customer.csO
+MC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\Inventory.csK
+IC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\Order.csO
+MC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\OrderList.csN
+LC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\Products.csK
+IC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\Store.cs^
+\C:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Repositories\IClothingStoreRepo.csY
+WC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Repositories\ICustomerRepo.csW
+UC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Repositories\IOrdersRepo.csY
+WC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Repositories\IProductsRepo.csT
+PC:\Users\andyl\AppData\Local\Temp\.NETCoreApp,Version=v2.2.AssemblyAttributes.csw
+sC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\obj\Debug\netcoreapp2.2\ClothingStore.Lib.AssemblyInfo.cs

@@ -1,0 +1,12 @@
+L
+CC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Class1.csutf-8U
+LC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\Customer.csutf-8V
+MC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\Inventory.csutf-8R
+IC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\Order.csutf-8V
+MC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\OrderList.csutf-8U
+LC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\Products.csutf-8R
+IC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Models\Store.csutf-8e
+\C:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Repositories\IClothingStoreRepo.csutf-8`
+WC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Repositories\ICustomerRepo.csutf-8^
+UC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Repositories\IOrdersRepo.csutf-8`
+WC:\revature\andy-project1\ClothingStore\ClothingStore.Lib\Repositories\IProductsRepo.csutf-8

@@ -1,0 +1,14 @@
+P
+GC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Class1.csutf-8P
+GC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Mapper.csutf-8Y
+PC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Models\Customer.csutf-8Z
+QC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Models\Inventory.csutf-8]
+TC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Models\ItemProducts.csutf-8Y
+PC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Models\Location.csutf-8Z
+QC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Models\OrderList.csutf-8[
+RC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Models\StoreOrder.csutf-8Y
+PC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Project0Context.csutf-8c
+ZC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Repositories\CustomerRepo.csutf-8`
+WC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Repositories\OrderRepo.csutf-8b
+YC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Repositories\ProductRepo.csutf-8`
+WC:\revature\andy-project1\ClothingStore\ClothingStore.Context\Repositories\StoreRepo.csutf-8

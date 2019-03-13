@@ -1,0 +1,13 @@
+h
+_C:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Controllers\CustomersController.csutf-8c
+ZC:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Controllers\HomeController.csutf-8e
+\C:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Controllers\OrdersController.csutf-8g
+^C:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Controllers\ProductsController.csutf-8e
+\C:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Controllers\StoresController.csutf-8X
+OC:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Models\Customer.csutf-8^
+UC:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Models\ErrorViewModel.csutf-8V
+MC:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Models\Orders.csutf-8W
+NC:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Models\Product.csutf-8V
+MC:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Models\Stores.csutf-8P
+GC:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Program.csutf-8P
+GC:\revature\andy-project1\ClothingStore\ClothingStore.WebApp\Startup.csutf-8

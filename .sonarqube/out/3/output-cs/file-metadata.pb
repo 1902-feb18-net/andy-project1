@@ -1,0 +1,10 @@
+O
+MC:\revature\andy-project1\ClothingStore\ClothingStore.Testing\CustomerTest.csP
+NC:\revature\andy-project1\ClothingStore\ClothingStore.Testing\CustomerTests.csM
+KC:\revature\andy-project1\ClothingStore\ClothingStore.Testing\OrdersTest.csN
+LC:\revature\andy-project1\ClothingStore\ClothingStore.Testing\ProductTest.csL
+JC:\revature\andy-project1\ClothingStore\ClothingStore.Testing\StoreTest.csM
+KC:\revature\andy-project1\ClothingStore\ClothingStore.Testing\StoreTests.csT
+PC:\Users\andyl\AppData\Local\Temp\.NETCoreApp,Version=v2.2.AssemblyAttributes.csz
+vC:\revature\andy-project1\ClothingStore\ClothingStore.Testing\obj\Debug\netcoreapp2.2\ClothingStore.Testing.Program.cs
+{C:\revature\andy-project1\ClothingStore\ClothingStore.Testing\obj\Debug\netcoreapp2.2\ClothingStore.Testing.AssemblyInfo.cs

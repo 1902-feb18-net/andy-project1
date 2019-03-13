@@ -106,7 +106,6 @@ namespace ClothingStore.WebApp.Controllers
         // POST: Customer/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[FromRoute] int id, [Bind("Name")]Restaurant restaurant
         public ActionResult Edit([FromRoute]int id, [Bind("Name")] Customer customer)
         {
             try
