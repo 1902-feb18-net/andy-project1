@@ -12,7 +12,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   solutionPath: './ClothingStore'
-  appProjectPath: 'ClothingStore.WebApp'
+  appProjectPath: 'ClothingStore/ClothingStore.WebApp'
 
 steps:
 - script: dotnet build "$(solutionPath)" --configuration $(buildConfiguration)

@@ -12,12 +12,12 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="OrderId" class="control-label"></label>
                 <input asp-for="OrderId" class="form-control" />
                 <span asp-validation-for="OrderId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="StoreId" class="control-label"></label>
                 <input asp-for="StoreId" class="form-control" />
                 <span asp-validation-for="StoreId" class="text-danger"></span>
@@ -26,35 +26,98 @@
                 <label asp-for="CustomerId" class="control-label"></label>
                 <input asp-for="CustomerId" class="form-control" />
                 <span asp-validation-for="CustomerId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            </div>*@
+            <div class="form-group" hidden>
                 <label asp-for="DatePurchased" class="control-label"></label>
                 <input asp-for="DatePurchased" class="form-control" />
                 <span asp-validation-for="DatePurchased" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" hidden>
                 <label asp-for="Total" class="control-label"></label>
                 <input asp-for="Total" class="form-control" />
                 <span asp-validation-for="Total" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="CustomerId" class="control-label"></label>
+                <select asp-for="CustomerId"
+                        asp-items="@Model.CustomerItems" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="StoreId" class="control-label"></label>
+                <select asp-for="StoreId"
+                        asp-items="@(new SelectList(Model.Stores, "Id", "Name"))" class="form-control"></select>
+            </div>
+
+
+            @*@for (int i = 0; i < Model.Products.Count; i++)
+            {
+                @Html.HiddenFor(model => model.Products[i].ItemId)
+                @Html.HiddenFor(model => model.Products[i].ItemName)
+                @Html.HiddenFor(model => model.Products[i].ItemPrice)
+                @Html.HiddenFor(model => model.Products[i].ItemDescription)
+                @Html.HiddenFor(model => model.Products[i].orderList)
+            }*@
+
+            @*@for (int i = 0; i < Model.OrderGames.Count; i++)
+        {
+            @Html.HiddenFor(model => Model.OrderGames[i].OrderId)
+            @Html.HiddenFor(model => Model.OrderGames[i].GameId)
+            @Html.HiddenFor(model => Model.OrderGames[i].Edition)
+            @Html.HiddenFor(model => Model.OrderGames[i].GameQuantity)
+            @Html.HiddenFor(model => Model.OrderGames[i].Price)
+        }*@
 
             @*<div class="form-group">
-                <label asp-for="CustomerId" class="control-label"></label>
-                @Html.DropDownListFor(model => Model.CustomerId, Model.customerItems, "Please select", new { id = "CustomerId" })
-                <span asp-validation-for="Total" class="text-danger"></span>
-            </div>
+            <label asp-for="CustomerId" class="control-label"></label>
+            <select asp-for="CustomerId"
+                    asp-items="@(new SelectList(Model.customerItems, "Id", "Text"))" class="form-control" ></select>
 
-            <div class="form-group">
-                <label asp-for="Total" class="control-label"></label>
-                <input asp-for="Total" class="form-control" />
-                <span asp-validation-for="Total" class="text-danger"></span>
-            </div>*@
+        </div>*@
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
+
+
+
+
+@*@if (Model.Products != null)
+{
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemPrice)
+            </td>
+            <td>
+                @if (item.ItemId == 1)
+                {
+                    <p>@item.ItemDescription</p>
+                }
+                else if (item.ItemId == 2)
+                {
+                    <p>@item.ItemDescription</p>
+                }
+                else if (item.ItemId == 3)
+                {
+                    <p>@item.ItemDescription</p>
+                }
+                else
+                {
+                    <p>Invalid Edition</p>
+                }
+
+            </td>
+        </tr>
+    }
+}*@
 
 <div>
     <a asp-action="Index">Back to List</a>

@@ -122,21 +122,50 @@ namespace ClothingStore.WebApp.Controllers
             var viewModel = new Orders
             {
                 Stores = SRepo.GetStores().ToList(),
-                customerItems = customerItems,
+                CustomerItems = customerItems,
                 Products = products,
                 OrderLists = orderLists
             };
-            return View();
+            
+            return View(viewModel);
         }
 
         // POST: Orders/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Orders order)
         {
             try
             {
                 // TODO: Add insert logic here
+                var stores = SRepo.GetStores().ToList();
+                order.Stores = new List<Lib.Store>();
+
+                if (order.Stores == null)
+                {
+                    foreach (var s in stores)
+                    {
+                        var tmpStore = new Lib.Store
+                        {
+                            Id = s.Id,
+                            Name = s.Name
+                        };
+                        order.Stores.Add(tmpStore);
+                    }
+                }
+
+                var ord = new Lib.Order
+                {
+                    StoreId = order.StoreId,
+                    DatePurchased = DateTime.Now,
+                    CustomerId = order.CustomerId,
+                    Total = order.Total
+                };
+
+                ORepo.InsertOrder(ord);
+
+                
+
 
                 return RedirectToAction(nameof(Index));
             }
