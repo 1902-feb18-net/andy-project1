@@ -152,6 +152,13 @@ namespace ClothingStore.Context
             order.OrderId = value.OrderId;
         }
 
+        public void InsertOrderlist(Lib.OrderList orderlist)
+        {
+            var value = Mapper.Map(orderlist);
+            _db.Add(value);
+            _db.SaveChanges();
+        }
+
         public int LastId()
         {
             Order x = Mapper.Map(_db.StoreOrder.OrderByDescending(o => o.OrderId).AsNoTracking().First());

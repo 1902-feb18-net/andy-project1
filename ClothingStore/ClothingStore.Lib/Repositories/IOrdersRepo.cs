@@ -14,6 +14,7 @@ namespace ClothingStore.Lib
         IEnumerable<Order> GetOrderById(int orderId);
         IEnumerable<OrderList> GetOrderLists(int orderId);
         void InsertOrder(Order order);
+        void InsertOrderlist(OrderList orderlist);
         //void DeleteOrder(int orderId);
         void UpdateOrder(Order order);
         //void DisplayOrderDetails(int orderId);

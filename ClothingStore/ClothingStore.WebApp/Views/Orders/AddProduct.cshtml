@@ -1,0 +1,53 @@
+﻿@model ClothingStore.WebApp.Models.Orders
+
+@{
+    ViewData["Title"] = "AddProduct";
+}
+
+<h1>AddProduct</h1>
+
+<h4>Orders</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddProduct">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="OrderList.ItemId" class="control-label"></label>
+                <select asp-for="OrderList.ItemId"
+                        asp-items="@(new SelectList(Model.Products, "ItemId", "ItemName"))" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderList.ItemBought" class="control-label"></label>
+                <input asp-for="OrderList.ItemBought" class="form-control" />
+                <span asp-validation-for="OrderList.ItemBought" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OrderList.Special" class="control-label"></label>
+                <select asp-for="OrderList.Special"
+                        asp-items="@(new SelectList(Model.Specials, "Key", "Value"))" class="form-control"></select>
+            </div>
+
+            @for (int i = 0; i < Model.Products.Count; i++)
+            {
+                @Html.HiddenFor(model => model.Products[i].ItemId)
+                @Html.HiddenFor(model => model.Products[i].ItemName)
+                @Html.HiddenFor(model => model.Products[i].ItemPrice)
+                @Html.HiddenFor(model => model.Products[i].ItemDescription)
+                @Html.HiddenFor(model => model.Products[i].orderList)
+            }
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -159,14 +159,74 @@ namespace ClothingStore.WebApp.Controllers
                     StoreId = order.StoreId,
                     DatePurchased = DateTime.Now,
                     CustomerId = order.CustomerId,
-                    Total = order.Total
+                    Total = 0
                 };
 
+                int orderCount = ORepo.GetOrders().Count() + 2;
+                TempData["Order Id"] = orderCount;
                 ORepo.InsertOrder(ord);
 
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // let's add in our AddProduct here
+        public ActionResult AddProduct(Orders order)
+        {
+            //Order.Games = GameRepo.GetAllGames().ToList();
+            order.Products = PRepo.GetProducts().ToList();
+            order.Specials = new Dictionary<int, string>();
+            order.Specials.Add(1, "Standard");
+            order.Specials.Add(2, "Leather");
+            order.Specials.Add(3, "Silk");
+
+            order.OrderList = new Lib.OrderList
+            {
+                ItemId = 1,
+                Special = 1,
+                Price = 20
                 
+            };
+
+            if (order.OrderLists == null)
+            {
+                order.OrderLists = new List<Lib.OrderList>();
+            }
 
 
+            return View(order);
+        }
+
+        // POST: Orders/AddProduct
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddProduct(Orders Order, ICollection<Lib.Order> o)
+        {
+            try
+            {
+                if (Order.OrderLists == null)
+                {
+                    Order.OrderLists = new List<Lib.OrderList>();
+                }
+
+                Order.OrderList.Product = PRepo.GetProductsById(Order.OrderList.ItemId);
+                Order.OrderList.ItemId = Order.OrderList.ItemId;
+                Order.OrderList.Price = Order.OrderList.GetCostOfPurchase();
+                Order.OrderList.ItemBought = Order.OrderList.ItemBought;
+                Order.OrderList.OrderId = (int)TempData.Peek("Order Id");
+
+                //Order.NextOrderGame.Game = GameRepo.GetGameById(Order.NextOrderGame.GameId);
+                //Order.NextOrderGame.Price = Order.NextOrderGame.GetCostOfPurchase();
+                //Order.NextOrderGame.Game.Name = Order.NextOrderGame.Game.Name;
+                //Order.NextOrderGame.OrderId = _db.Orders.Max(o => o.OrderId) + 1;
+
+                //var OrderItems = new List<OrderGames>();
+                //OrderItems.AddRange(_db.OrderGames.Where(o => o.OrderId == _db.Orders.Max(r => r.OrderId) + 1).ToList());
+                ORepo.InsertOrderlist(Order.OrderList);
                 return RedirectToAction(nameof(Index));
             }
             catch

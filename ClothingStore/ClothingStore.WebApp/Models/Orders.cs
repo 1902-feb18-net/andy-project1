@@ -33,9 +33,15 @@ namespace ClothingStore.WebApp.Models
         public string FullName { get; set; }
         public List<Store> Stores { get; internal set; }
         public List<Lib.Customer> Customers { get; internal set; }
-        public List<Products> Products { get; internal set; }
+        public List<Products> Products { get; set; }
         public List<OrderList> OrderLists { get; internal set; }
         public List<SelectListItem> CustomerItems { get; internal set; }
+
+        public OrderList OrderList { get; set; }
+        public Dictionary<int, string> Specials;
+
+        
+     
 
         //public virtual Customer Customer { get; set; }
         //public virtual Location Store { get; set; }

@@ -10,6 +10,15 @@
     <a asp-action="Create">Create New</a>
 </p>
 
+@if (TempData.Peek("Order Id") != null)
+{
+    <div>
+        <form asp-action="AddProduct" method="get">
+            <input type="submit" value="AddProduct" class="btn btn-info" />
+        </form>
+    </div>
+}
+
 <table class="table">
     <thead>
         <tr>
@@ -71,9 +80,14 @@
 </table>
 
 <div>
+    @if (TempData.Peek("Order Id") != null)
+    {
+        <h6>current order id is: @TempData.Peek("Order Id").ToString()</h6>
+    }
     <h5><strong>Basic Statistics</strong></h5>
     <h6>Total Sum: @ViewBag.totalSum</h6>
     <h6>Average: @ViewBag.averageSum</h6>
     <h6>Smallest Order: @ViewBag.minNum</h6>
     <h6>Largest Order: @ViewBag.maxNum</h6>
+
 </div>
