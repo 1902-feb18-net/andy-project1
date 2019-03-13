@@ -212,9 +212,7 @@ namespace ClothingStore.WebApp.Controllers
                 }
 
                 Order.OrderList.Product = PRepo.GetProductsById(Order.OrderList.ItemId);
-                Order.OrderList.ItemId = Order.OrderList.ItemId;
                 Order.OrderList.Price = Order.OrderList.GetCostOfPurchase();
-                Order.OrderList.ItemBought = Order.OrderList.ItemBought;
                 Order.OrderList.OrderId = (int)TempData.Peek("Order Id");
 
                 ORepo.InsertOrderlist(Order.OrderList);
